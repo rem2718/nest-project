@@ -1,0 +1,28 @@
+services:
+  database:
+    build: ./database
+    container_name: database
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nestdb
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./database:/var/lib/postgresql/data 
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  web_server:
+    build: ./web_server
+    container_name: web_server
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./web_server/.env
+    depends_on:
+      - database
+
+volumes:
+  postgres-data: 

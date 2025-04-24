@@ -1,8 +1,9 @@
 # compiled output
-/dist
-/node_modules
+*/dist
+web_server/node_modules
 /build
-
+*/pgdata
+*/web-server
 # Logs
 logs
 *.log
