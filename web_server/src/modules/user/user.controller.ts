@@ -27,7 +27,7 @@ export class UserController {
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
-  async remove(@Param('id') id: string) {
+  async delete(@Param('id') id: string) {
     return this.userService.remove(+id);
   }
 }
